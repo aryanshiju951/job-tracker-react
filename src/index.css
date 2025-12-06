@@ -1,0 +1,251 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #4f46e5;
+  --accent-2: #10b981;
+  --danger: #ef4444;
+  --border: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+html, body, #root {
+  min-height: 100%;   /* allow content taller than viewport */
+  height: auto;       /* don’t clip at exactly 100% */
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden; /* prevent sideways scroll */
+  overflow-y: auto;   /* allow vertical scroll */
+}
+
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px; /* keep desktop readable */
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  gap: 16px;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: #0b1220;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar .spacer {
+  flex: 1;
+}
+.navbar a {
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.navbar a.active {
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+/* Mobile navbar: stack links */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .navbar a, .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.button.secondary {
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+.button.danger {
+  background: var(--danger);
+}
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* Center standalone cards on tablet/mobile */
+@media (max-width: 768px) {
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 480px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+.grid.cols-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Tablet: collapse grids */
+@media (max-width: 768px) {
+  .grid.cols-2 {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .grid.cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid.cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: single column, centered */
+@media (max-width: 480px) {
+  .grid.cols-2,
+  .grid.cols-3,
+  .grid.cols-4 {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0b1220;
+  color: var(--text);
+}
+.label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.field {
+  margin-bottom: 14px;
+}
+.error {
+  color: var(--danger);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto; /* allow horizontal scroll if table too wide */
+}
+.table th, .table td {
+  border-bottom: 1px solid var(--border);
+  padding: 12px;
+  text-align: left;
+}
+.table th {
+  color: var(--muted);
+  font-weight: 600;
+  background: #0b1220;
+}
+
+/* Mobile table: smaller font */
+@media (max-width: 480px) {
+  .table th, .table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #0b1220;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+/* Default desktop navbar */
+.navbar-links {
+  display: flex;
+  gap: 16px;
+}
+
+/* Hamburger hidden on desktop */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .hamburger {
+    display: block; /* show hamburger */
+  }
+
+  .navbar-links {
+    display: none; /* hide links by default */
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    background: var(--panel);
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  .navbar-links.open {
+    display: flex; /* show when toggled */
+  }
+}
