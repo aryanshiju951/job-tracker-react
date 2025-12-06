@@ -1,16 +1,43 @@
-# React + Vite
+# Job Application Tracker (Frontend Only)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app to track job applications with fake auth, forms, tables, search, filter, sort, and pagination.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
+- React + Vite
+- React Router v6
+- Context API
+- date-fns
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
+- Login and protected routes
+- Add application form with validation and inline errors
+- Applications table:
+  - Search (company/title)
+  - Filters (type, status)
+  - Sort (company A–Z, date newest→oldest)
+  - Pagination (5 per page)
+  - Edit notes + Delete
+- Dashboard summary (counts + last 5)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Routes
+- / (Home)
+- /login (Login)
+- /dashboard (Protected)
+- /add-application (Protected)
+- /applications (Protected)
+- * (404)
+
+---
+
+## Screenshots
+Added images for:
+- Login page
+- Applications table
+- Dashboard summary
+
